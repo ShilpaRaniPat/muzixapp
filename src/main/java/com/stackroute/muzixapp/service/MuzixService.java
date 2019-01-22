@@ -13,7 +13,9 @@ public interface MuzixService {
         public List<Muzix> getAllUsers();
         public List<Muzix> deleteById(int trackId);
         public List<Muzix> updateUsers(Muzix muzix,int trackId);
-         public void findById(int trackId);
+        public void findById(int trackId);
+        public List<Muzix> getMuzixByName(String name);
+
     }
 
 

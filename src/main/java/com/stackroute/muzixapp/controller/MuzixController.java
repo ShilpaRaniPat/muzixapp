@@ -67,6 +67,21 @@ import java.util.Optional;
 
             return ResponseEntity.noContent().build();
         }
+        @GetMapping(value = "/muzix/{name}")
+        public ResponseEntity<List<Muzix>> getTrackByName(@PathVariable String name)
+        {
+            ResponseEntity responseEntity;
+            try {
+
+                return new ResponseEntity <List<Muzix>>(muzixService.getMuzixByName(name),HttpStatus.OK);
+            }
+            catch (Exception ex)
+            {
+                responseEntity = new ResponseEntity<String>(ex.getMessage(),HttpStatus.CONFLICT);
+            }
+            return responseEntity;
+        }
+
 
     }
 

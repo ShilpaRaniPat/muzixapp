@@ -46,6 +46,11 @@ public class MuzixServiceImpl implements MuzixService {
         return muzixRepository.findAll();
 
     }
+    @Override
+    public List<Muzix> getMuzixByName(String name){
+         return muzixRepository.getMuzixByName(name);
+
+    }
 
 
 
