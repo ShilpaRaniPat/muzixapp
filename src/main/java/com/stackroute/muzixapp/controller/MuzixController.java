@@ -51,7 +51,7 @@ import java.util.Optional;
             muzixService.deleteById(trackId);
             return new ResponseEntity<List<Muzix>>( muzixService.getAllUsers(),HttpStatus.OK);
         }
-        @PutMapping("/muzix/{trackId}")
+        @PutMapping("muzix/{trackId}")
         public ResponseEntity<Object> updateUser(@RequestBody Muzix muzix, @PathVariable int trackId) {
 
 
@@ -67,7 +67,7 @@ import java.util.Optional;
 
             return ResponseEntity.noContent().build();
         }
-        @GetMapping(value = "/muzix/{name}")
+        @GetMapping(value = "muzix/{name}")
         public ResponseEntity<List<Muzix>> getTrackByName(@PathVariable String name)
         {
             ResponseEntity responseEntity;
