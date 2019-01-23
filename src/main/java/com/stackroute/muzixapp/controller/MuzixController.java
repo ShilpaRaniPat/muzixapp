@@ -32,15 +32,11 @@ import java.util.Optional;
 //        }
 
         @PostMapping("muzix")
-        public ResponseEntity<?> saveUser(@RequestBody Muzix muzix) {
+        public ResponseEntity<?> saveUser(@RequestBody Muzix muzix) throws TrackAlreadyExistsException {
             ResponseEntity responseEntity;
-            try {
+
                 muzixService.saveUser(muzix);
                 responseEntity = new ResponseEntity<String>("creation successful", HttpStatus.CREATED);
-            } catch (TrackAlreadyExistsException ex) {
-                responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
-
-            }
             return responseEntity;
 
 
@@ -53,39 +49,30 @@ import java.util.Optional;
         }
 
         @DeleteMapping("muzix/{trackId}")
-        public ResponseEntity<?> deleteUser(@PathVariable int trackId) {
+        public ResponseEntity<?> deleteUser(@PathVariable int trackId) throws TrackNotFoundException {
             ResponseEntity responseEntity;
-            try {
                 muzixService.deleteById(trackId);
                 responseEntity = new ResponseEntity<List<Muzix>>(muzixService.getAllUsers(), HttpStatus.OK);
-            } catch (TrackNotFoundException ex) {
-                responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
-            }
+
+
             return responseEntity;
         }
 
         @PutMapping("muzix/{trackId}")
-        public ResponseEntity<?> updateUser(@RequestBody Muzix muzix, @PathVariable int trackId) {
+        public ResponseEntity<?> updateUser(@RequestBody Muzix muzix, @PathVariable int trackId) throws TrackNotFoundException {
             ResponseEntity responseEntity;
-            try {
                 muzixService.updateMuzix(muzix, trackId);
                 responseEntity = new ResponseEntity<List<Muzix>>(muzixService.getAllUsers(), HttpStatus.OK);
-            } catch (Exception ex) {
 
-                responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
-            }
             return responseEntity;
         }
 
         @GetMapping(value = "muzix/{name}")
-        public ResponseEntity<List<Muzix>> getTrackByName(@PathVariable String name) {
+        public ResponseEntity<List<Muzix>> getTrackByName(@PathVariable String name) throws TrackNotFoundException {
             ResponseEntity responseEntity;
-            try {
 
                 responseEntity = new ResponseEntity<List<Muzix>>(muzixService.getMuzixByName1(name), HttpStatus.OK);
-            } catch (TrackNotFoundException ex) {
-                responseEntity = new ResponseEntity<String>(ex.getMessage(), HttpStatus.CONFLICT);
-            }
+
             return responseEntity;
         }
     }
