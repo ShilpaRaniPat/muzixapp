@@ -49,12 +49,6 @@ public class MuzixAppApplication implements ApplicationListener<ContextRefreshed
     }
 
 
-//    @Override
-//    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-//        muzixRepository.save(new Muzix(2,"Sajal","name"));
-//
-//
-//    }
 
 
 

@@ -61,14 +61,14 @@ import java.util.Optional;
             return responseEntity;
         }
 
-        @GetMapping(value = "muzix/{name}")
-        public ResponseEntity<List<Muzix>> getTrackByName(@PathVariable String name) throws TrackNotFoundException {
-            ResponseEntity responseEntity;
-
-                responseEntity = new ResponseEntity<List<Muzix>>(muzixService.getMuzixByName1(name), HttpStatus.OK);
-
-            return responseEntity;
-        }
+//        @GetMapping(value = "muzix/{name}")
+//        public ResponseEntity<List<Muzix>> getTrackByName(@PathVariable String name) throws TrackNotFoundException {
+//            ResponseEntity responseEntity;
+//
+//                responseEntity = new ResponseEntity<List<Muzix>>(muzixService.getMuzixByName1(name), HttpStatus.OK);
+//
+//            return responseEntity;
+//        }
     }
 
 

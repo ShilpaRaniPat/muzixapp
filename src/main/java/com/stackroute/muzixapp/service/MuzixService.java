@@ -17,7 +17,7 @@ public interface MuzixService {
         public List<Muzix> deleteById(int trackId) throws TrackNotFoundException;
        public ResponseEntity<Object> updateMuzix(Muzix muzix, int trackId) throws TrackNotFoundException;
         public boolean findById(int trackId) throws TrackNotFoundException;
-        public List<Muzix> getMuzixByName1(String name) throws TrackNotFoundException;
+//        public List<Muzix> getMuzixByName1(String name) throws TrackNotFoundException;
 
     }
 

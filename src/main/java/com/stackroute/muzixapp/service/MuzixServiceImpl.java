@@ -15,14 +15,12 @@ import java.util.Optional;
 @Service
 public class MuzixServiceImpl implements MuzixService {
     private MuzixRepository muzixRepository;
-//    private Muzix muzix1;
 
     @Autowired
     public MuzixServiceImpl( MuzixRepository userRepository){
         this.muzixRepository=userRepository;
     }
 
-    public MuzixServiceImpl(){}
     @Override
     public Muzix saveUser(Muzix muzix) throws TrackAlreadyExistsException {
         if(!muzixRepository.existsById(muzix.getTrackId())){
@@ -71,14 +69,14 @@ public class MuzixServiceImpl implements MuzixService {
         muzixRepository.save(muzix);
         return ResponseEntity.noContent().build();
     }
-    @Override
-    public List<Muzix> getMuzixByName1(String name)throws TrackNotFoundException{
-        if(muzixRepository.getMuzixByName(name).isEmpty()){
-            throw new TrackNotFoundException((" track not found"));
-        }
-         return muzixRepository.getMuzixByName(name);
-
-    }
+//    @Override
+//    public List<Muzix> getMuzixByName1(String name)throws TrackNotFoundException{
+//        if(muzixRepository.getMuzixByName(name).isEmpty()){
+//            throw new TrackNotFoundException((" track not found"));
+//        }
+//         return muzixRepository.getMuzixByName(name);
+//
+//    }
 
 
 
