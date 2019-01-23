@@ -14,7 +14,7 @@ import java.util.Optional;
 
 @Service
 public class MuzixServiceImpl implements MuzixService {
-    MuzixRepository muzixRepository;
+    private MuzixRepository muzixRepository;
 
     @Autowired
     public MuzixServiceImpl( MuzixRepository userRepository){
