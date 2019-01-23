@@ -20,12 +20,12 @@ import org.springframework.stereotype.Component;
 public class MuzixAppApplication implements ApplicationListener<ContextRefreshedEvent>, CommandLineRunner {
 
 
-	@Value("${trackId}")
+	@Value("${trackId:default}")
 	private int trackId;
 	@Value("${trackName}")
-	private int trackName;
+	private String trackName;
 	@Value("${trackComment}")
-	private int trackComment;
+	private String trackComment;
 
 
 	public static void main(String[] args) {
