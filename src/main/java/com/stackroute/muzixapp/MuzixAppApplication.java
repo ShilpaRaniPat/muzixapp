@@ -20,40 +20,42 @@ import org.springframework.stereotype.Component;
 public class MuzixAppApplication implements ApplicationListener<ContextRefreshedEvent>, CommandLineRunner {
 
 
-//	@Value("${trackId}")
-//	private int trackId;
-//	@Value("${trackName}")
-//	private String trackName;
-//	@Value("${trackComment}")
-//	private String trackComment;
+	@Value("${trackId}")
+	private int trackId;
+	@Value("${trackName}")
+	private String trackName;
+	@Value("${trackComment}")
+	private String trackComment;
+    @Autowired
+    Environment ev;
+
+    @Override
+    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+        muzixRepository.save(new Muzix(Integer.parseInt(ev.getProperty("trackId")),ev.getProperty("trackName"),ev.getProperty("trackComment")));
+
+    }
 
 
 	public static void main(String[] args) {
 		SpringApplication.run(MuzixAppApplication.class, args);
 	}
 	@Autowired
-   MuzixRepository muzixRepository;
+    MuzixRepository muzixRepository;
 
 
 	@Override
 	public void run(String...args) {
-		muzixRepository.save(new Muzix(1,"Sajal","name"));
-	}
-	@Autowired
-	Environment ev;
-
-    @Override
-    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        muzixRepository.save(new Muzix(2,"Sajal","name"));
-
-
+	    muzixRepository.save(new Muzix(1, "Sajal", "name"));
     }
 
-//	@Override
-//	public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-//		muzixRepository.save(new Muzix(Integer.parseInt(ev.getProperty("trackId"),ev.getProperty("trackName"),ev.getProperty("trackComment")));
+
+//    @Override
+//    public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
+//        muzixRepository.save(new Muzix(2,"Sajal","name"));
 //
-//	}
+//
+//    }
+
 
 
 }

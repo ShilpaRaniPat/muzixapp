@@ -9,9 +9,9 @@ import javax.persistence.Id;
 
 @Builder
 @Data
-@Entity
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
+@Entity
 public class Muzix {
     @Id
     private int trackId;

@@ -25,12 +25,6 @@ import java.util.Optional;
             this.muzixService = muzixService;
         }
 
-//        MuzixRepository muzixRepository;
-
-//        public MuzixController(MuzixRepository muzixRepository) {
-//            this.muzixRepository = muzixRepository;
-//        }
-
         @PostMapping("muzix")
         public ResponseEntity<?> saveUser(@RequestBody Muzix muzix) throws TrackAlreadyExistsException {
             ResponseEntity responseEntity;

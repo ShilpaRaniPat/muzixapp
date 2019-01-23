@@ -15,14 +15,17 @@ import java.util.Optional;
 @Service
 public class MuzixServiceImpl implements MuzixService {
     private MuzixRepository muzixRepository;
+//    private Muzix muzix1;
 
     @Autowired
     public MuzixServiceImpl( MuzixRepository userRepository){
         this.muzixRepository=userRepository;
     }
+
+    public MuzixServiceImpl(){}
     @Override
     public Muzix saveUser(Muzix muzix) throws TrackAlreadyExistsException {
-        if(muzixRepository.existsById(muzix.getTrackId())){
+        if(!muzixRepository.existsById(muzix.getTrackId())){
             throw new TrackAlreadyExistsException("Track is already present");
         }
         Muzix savedUser=muzixRepository.save(muzix);
@@ -64,7 +67,7 @@ public class MuzixServiceImpl implements MuzixService {
 
         }
 
-        muzix.setTrackId(id);
+       muzix.setTrackId(id);
         muzixRepository.save(muzix);
         return ResponseEntity.noContent().build();
     }
