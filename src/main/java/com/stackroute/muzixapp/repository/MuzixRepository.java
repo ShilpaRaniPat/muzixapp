@@ -13,4 +13,6 @@ public interface MuzixRepository extends JpaRepository<Muzix,Integer> {
 
     @Query("select m from Muzix m where m.trackName=?1")
     List<Muzix> getMuzixByName(String Name);
+
+//    List<String> updateMuzix(Muzix muzix, int trackId);
 }
